@@ -409,7 +409,7 @@ class InstaPy:
 
         return self
 
-    def login(self):
+    def login(self, modded=False):
         """Used to login the user either with the username and password"""
         # InstaPy uses page_delay speed to implicit wait for elements,
         # here we're decreasing it to 5 seconds instead of the default 25
@@ -458,7 +458,8 @@ class InstaPy:
         self.following_num = log_following_num(
             self.browser, self.username, self.logfolder
         )
-
+        if modded:
+            return self, self.browser
         return self
 
     def set_sleep_reduce(self, percentage: int):
