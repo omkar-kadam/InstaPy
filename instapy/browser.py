@@ -6,6 +6,7 @@ from selenium.webdriver.firefox.options import Options as Firefox_Options
 from selenium.webdriver import Remote
 from selenium.common.exceptions import UnexpectedAlertPresentException
 from webdriverdownloader import GeckoDriverDownloader
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 # general libs
 import os
@@ -120,7 +121,8 @@ def set_selenium_local_session(
 
     # geckodriver log in specific user logfolder
     geckodriver_log = "{}geckodriver.log".format(logfolder)
-
+    cap = DesiredCapabilities().FIREFOX
+    cap["marionette"] = False
     # prefer user path before downloaded one
     driver_path = geckodriver_path or get_geckodriver()
     browser = webdriver.Firefox(
@@ -128,6 +130,7 @@ def set_selenium_local_session(
         executable_path=driver_path,
         log_path=geckodriver_log,
         options=firefox_options,
+        capabilities=cap
     )
 
     # add extenions to hide selenium
