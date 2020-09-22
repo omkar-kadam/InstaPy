@@ -94,6 +94,8 @@ def set_selenium_local_session(
     if browser_executable_path is not None:
         firefox_options.binary = browser_executable_path
 
+    firefox_options.binary = '/app/vendor/firefox/firefox'  # Added by me
+
     # set English language
     firefox_profile.set_preference("intl.accept_languages", "en-US")
     firefox_profile.set_preference("general.useragent.override", user_agent)
