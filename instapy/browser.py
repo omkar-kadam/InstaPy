@@ -123,8 +123,8 @@ def set_selenium_local_session(
 
     # geckodriver log in specific user logfolder
     geckodriver_log = "{}geckodriver.log".format(logfolder)
-    cap = DesiredCapabilities().FIREFOX
-    cap["marionette"] = False
+    # cap = DesiredCapabilities().FIREFOX
+    # cap["marionette"] = False
     # prefer user path before downloaded one
     driver_path = geckodriver_path or get_geckodriver()
     browser = webdriver.Firefox(
